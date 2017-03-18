@@ -36,9 +36,15 @@
     <Button
             android:text="Count BMI"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/button_countBMI"/>
+            android:layout_height="wrap_content"
+            android:id="@+id/button_countBMI"/>
     <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/textView_result"/>
+            android:layout_height="wrap_content"
+            android:text="Your BMI"/>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_result"/>
 </LinearLayout>
 
