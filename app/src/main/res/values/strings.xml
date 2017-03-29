@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">BMI Counter App</string>
+    <string name="mass">MASS: </string>
+    <string name="height">HEIGHT: </string>
+    <string name="bmi">BMI</string>
+    <string name="underwieght">You\'re underwieght</string>
+    <string name="normal">You\'re normal</string>
+    <string name="overweight">You\'re overweight</string>
+    <string name="obese">You\'re obese</string>
+    <string name="clinically_obese">You\'re clinically obese</string>
+    <string name="count">COUNT</string>
+    <string-array name="measures_array">
+        <item>Metric</item>
+        <item>Imperial</item>
+    </string-array>
 </resources>
