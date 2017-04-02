@@ -1,75 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
 
-    <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:ems="10"
-            android:layout_below="@+id/editText_mass" android:layout_alignStart="@+id/editText_mass" android:id="@+id/editText_height"/>
-    <TextView
-            android:text="@string/height"
-            android:textSize="@dimen/def_text_size"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView_height" android:layout_above="@+id/button_countBMI"
-            android:layout_alignParentStart="true" android:layout_toStartOf="@+id/editText_height"
-            android:layout_below="@+id/editText_mass" android:textAlignment="center"
-            android:gravity="center_vertical"/>
-    <TextView
-            android:text="@string/mass"
-            android:textSize="@dimen/def_text_size"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView_mass"
-            android:layout_toStartOf="@+id/editText_mass"
-            android:layout_above="@+id/editText_height" android:textAlignment="center"
-            android:layout_centerInParent="false"
-            android:gravity="center_vertical" android:layout_alignTop="@+id/editText_mass"/>
-    <TextView
-            android:text="@string/bmi"
-            android:textSize="@dimen/def_text_size"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView_bmi"
-            android:layout_below="@+id/button_countBMI" android:layout_centerHorizontal="true"
-            android:textAlignment="center"/>
-    <TextView
-            android:text=""
-            android:textSize="@dimen/def_text_size"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView_result"
-            android:layout_below="@+id/textView_bmi" android:layout_alignParentStart="true"
-            android:textAlignment="center" android:layout_centerVertical="false"/>
-    <TextView
-            android:text=""
-            android:textSize="@dimen/def_text_size"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView_message"
-            android:layout_below="@+id/textView_result" android:layout_centerHorizontal="true"
-            android:textAlignment="center"/>
-    <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:ems="10"
-            android:id="@+id/editText_mass" android:layout_alignParentTop="true" android:layout_alignParentEnd="true"
-            android:layout_marginTop="50dp"/>
-    <Button
-            android:text="@string/count"
-            android:textSize="@dimen/def_text_size"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button_countBMI"
-            android:layout_below="@+id/editText_height" android:layout_centerHorizontal="true"/>
-    <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:id="@+id/spinner" android:layout_above="@+id/textView_mass"
-            android:layout_toEndOf="@+id/textView_mass"/>
-</RelativeLayout>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:ems="10"
+                android:imeOptions="flagNoExtractUi"
+                android:layout_below="@+id/editText_mass" android:layout_alignStart="@+id/editText_mass"
+                android:id="@+id/editText_height"/>
+        <TextView
+                android:text="@string/height"
+                android:textSize="@dimen/def_text_size"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView_height" android:layout_above="@+id/button_countBMI"
+                android:layout_alignParentStart="true" android:layout_toStartOf="@+id/editText_height"
+                android:layout_below="@+id/editText_mass" android:textAlignment="center"
+                android:gravity="center_vertical"/>
+        <TextView
+                android:text="@string/mass"
+                android:textSize="@dimen/def_text_size"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView_mass"
+                android:layout_toStartOf="@+id/editText_mass"
+                android:layout_above="@+id/editText_height" android:textAlignment="center"
+                android:layout_centerInParent="false"
+                android:gravity="center_vertical" android:layout_alignTop="@+id/editText_mass"/>
+        <TextView
+                android:text="@string/bmi"
+                android:textSize="@dimen/def_text_size"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView_bmi"
+                android:layout_below="@+id/button_countBMI" android:layout_centerHorizontal="true"
+                android:textAlignment="center"/>
+        <TextView
+                android:text=""
+                android:textSize="@dimen/def_text_size"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView_result"
+                android:layout_below="@+id/textView_bmi" android:layout_alignParentStart="true"
+                android:textAlignment="center" android:layout_centerVertical="false"/>
+        <TextView
+                android:text=""
+                android:textSize="@dimen/def_text_size"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView_message"
+                android:layout_below="@+id/textView_result" android:layout_centerHorizontal="true"
+                android:textAlignment="center"/>
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:ems="10"
+                android:imeOptions="flagNoExtractUi"
+                android:id="@+id/editText_mass" android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="50dp"/>
+        <Button
+                android:text="@string/count"
+                android:textSize="@dimen/def_text_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_countBMI"
+                android:layout_below="@+id/editText_height" android:layout_centerHorizontal="true"/>
+        <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:id="@+id/spinner" android:layout_above="@+id/textView_mass"
+                android:layout_toEndOf="@+id/textView_mass"/>
+    </RelativeLayout>
+
+</ScrollView>

@@ -3,4 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorBehindAuthorPhoto">#F0F5FF</color>
+    <color name="green">#00BB00</color>
+    <color name="orange">#FFA500</color>
 </resources>

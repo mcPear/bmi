@@ -9,6 +9,8 @@
     <string name="obese">You\'re obese</string>
     <string name="clinically_obese">You\'re clinically obese</string>
     <string name="count">COUNT</string>
+    <string name="author">Maciej Gruszczyński</string>
+    <string name="send_to">Share result to...</string>
     <string-array name="measures_array">
         <item>Metric</item>
         <item>Imperial</item>
