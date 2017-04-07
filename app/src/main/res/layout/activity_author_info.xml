@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent" android:weightSum="1"
+              android:layout_height="match_parent"
+              android:weightSum="1"
               android:background="@color/colorBehindAuthorPhoto">
 
     <TextView
             android:text="@string/author"
             android:textSize="30sp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/textView"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"
             android:textAlignment="center"
             android:gravity="center_vertical"
             android:paddingBottom="10dp"
@@ -19,5 +22,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" app:srcCompat="@drawable/author" android:id="@+id/imageView"/>
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/author"
+            android:id="@+id/imageView"/>
 </LinearLayout>

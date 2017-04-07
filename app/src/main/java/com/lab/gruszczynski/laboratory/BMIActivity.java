@@ -35,8 +35,8 @@ public class BMIActivity extends AppCompatActivity {
     private ICountBMI iCountBMI;
     private CountBMIForKgM countBMIForKgM;
     private CountBMIForLbsFt countBMIForLbsFt;
-    private Boolean BMIcalculated=false;
-    private float BMIresult=0f;
+    private Boolean BMIcalculated = false;
+    private float BMIresult = 0f;
     private SharedPreferences sharedPref;
 
 
@@ -60,15 +60,15 @@ public class BMIActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                switch (position){
+                switch (position) {
                     case 0: {
-                        iCountBMI=countBMIForKgM;
-                        Log.d("@@@@@",iCountBMI.toString());
+                        iCountBMI = countBMIForKgM;
+                        Log.d("@@@@@", iCountBMI.toString());
                         break;
                     }
                     case 1: {
-                        iCountBMI=countBMIForLbsFt;
-                        Log.d("@@@@@",iCountBMI.toString());
+                        iCountBMI = countBMIForLbsFt;
+                        Log.d("@@@@@", iCountBMI.toString());
                         break;
                     }
                 }
@@ -81,21 +81,17 @@ public class BMIActivity extends AppCompatActivity {
         });
 
         countBMIButton.setOnClickListener(
-                new View.OnClickListener()
-                {
-                    public void onClick(View view)
-                    {
+                new View.OnClickListener() {
+                    public void onClick(View view) {
                         try {
                             BMIresult = iCountBMI.countBMI(Float.parseFloat(massEditText.getText().toString()), Float.parseFloat(heightEditText.getText().toString()));
                             showResultMessages();
                             BMIcalculated = true;
-                        }
-                        catch(NumberFormatException e){
+                        } catch (NumberFormatException e) {
                             e.printStackTrace();
                             showExceptionMessage("Wrong entry");
                             BMIcalculated = false;
-                        }
-                        catch(IllegalArgumentException e){
+                        } catch (IllegalArgumentException e) {
                             e.printStackTrace();
                             showExceptionMessage(e.getMessage());
                             BMIcalculated = false;
@@ -108,11 +104,10 @@ public class BMIActivity extends AppCompatActivity {
     public void onSaveInstanceState(Bundle savedInstanceState) {
 
         savedInstanceState.putBoolean("BMIcalculated", BMIcalculated);
-        if(BMIcalculated) {
+        if (BMIcalculated) {
             savedInstanceState.putFloat("result", BMIresult);
-        }
-        else{
-            savedInstanceState.putString("noResultMessage",messageTextView.getText().toString());
+        } else {
+            savedInstanceState.putString("noResultMessage", messageTextView.getText().toString());
         }
 
         super.onSaveInstanceState(savedInstanceState);
@@ -125,11 +120,10 @@ public class BMIActivity extends AppCompatActivity {
 
         BMIcalculated = savedInstanceState.getBoolean("BMIcalculated");
 
-        if(BMIcalculated){
+        if (BMIcalculated) {
             BMIresult = savedInstanceState.getFloat("result");
             showResultMessages();
-        }
-        else{
+        } else {
             messageTextView.setText(savedInstanceState.getString("noResultMessage"));
         }
 
@@ -147,29 +141,27 @@ public class BMIActivity extends AppCompatActivity {
 
         switch (item.getTitle().toString()) {
             case "Save":
-                if(BMIcalculated){
+                if (BMIcalculated) {
                     sharedPref = this.getPreferences(Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPref.edit();
-                    editor.putFloat(getString(R.string.mass),Float.parseFloat(massEditText.getText().toString()));
-                    editor.putFloat(getString(R.string.height),Float.parseFloat(heightEditText.getText().toString()));
+                    editor.putFloat(getString(R.string.mass), Float.parseFloat(massEditText.getText().toString()));
+                    editor.putFloat(getString(R.string.height), Float.parseFloat(heightEditText.getText().toString()));
                     editor.commit();
-                }
-                else{
+                } else {
                     Toast toast = Toast.makeText(getApplicationContext(), "Count first, please", Toast.LENGTH_SHORT);
                     toast.show();
                 }
                 break;
             case "Share":
-                if(BMIcalculated){
+                if (BMIcalculated) {
                     String messageText = messageTextView.getText().toString();
-                    String shareText = "Result: Your BMI is "+String.format("%.2f", BMIresult)+" and "+messageText+" !";
+                    String shareText = "Result: Your BMI is " + String.format("%.2f", BMIresult) + " and " + messageText + " !";
                     Intent shareIntent = new Intent();
                     shareIntent.setAction(Intent.ACTION_SEND);
                     shareIntent.putExtra(Intent.EXTRA_TEXT, shareText);
                     shareIntent.setType("text/plain");
                     startActivity(Intent.createChooser(shareIntent, getResources().getText(R.string.send_to)));
-                }
-                else{
+                } else {
                     Toast toast = Toast.makeText(getApplicationContext(), "Count first, please", Toast.LENGTH_SHORT);
                     toast.show();
                 }
@@ -182,43 +174,42 @@ public class BMIActivity extends AppCompatActivity {
         return true;
     }
 
-    private void showExceptionMessage(String message){
+    private void showExceptionMessage(String message) {
         bmiTextView.setVisibility(View.GONE);
         resultTextView.setVisibility(View.GONE);
         messageTextView.setText(message);
     }
 
-    private void showResultMessages(){
+    private void showResultMessages() {
         bmiTextView.setVisibility(View.VISIBLE);
         resultTextView.setVisibility(View.VISIBLE);
-        resultTextView.setText(((Float)BMIresult).toString());
+        resultTextView.setText(((Float) BMIresult).toString());
         setResultTextColor(BMIresult);
         messageTextView.setVisibility(View.VISIBLE);
         setMessageText(BMIresult);
     }
 
-    private void setResultTextColor(float bmiValue){
-        if (bmiValue<18.5) resultTextView.setTextColor(Color.BLUE);
-        else if (bmiValue<25) resultTextView.setTextColor(getColor(R.color.green));
-        else if (bmiValue<30) resultTextView.setTextColor(getColor(R.color.orange));
-        else if (bmiValue<35) resultTextView.setTextColor(Color.RED);
+    private void setResultTextColor(float bmiValue) {
+        if (bmiValue < 18.5) resultTextView.setTextColor(Color.BLUE);
+        else if (bmiValue < 25) resultTextView.setTextColor(getColor(R.color.green));
+        else if (bmiValue < 30) resultTextView.setTextColor(getColor(R.color.orange));
+        else if (bmiValue < 35) resultTextView.setTextColor(Color.RED);
         else resultTextView.setTextColor(Color.BLACK);
     }
 
-    private void setMessageText(float bmiValue){
-        if (bmiValue<18.5) messageTextView.setText(R.string.underwieght);
-        else if (bmiValue<25) messageTextView.setText(R.string.normal);
-        else if (bmiValue<30) messageTextView.setText(R.string.overweight);
-        else if (bmiValue<35) messageTextView.setText(R.string.obese);
+    private void setMessageText(float bmiValue) {
+        if (bmiValue < 18.5) messageTextView.setText(R.string.underwieght);
+        else if (bmiValue < 25) messageTextView.setText(R.string.normal);
+        else if (bmiValue < 30) messageTextView.setText(R.string.overweight);
+        else if (bmiValue < 35) messageTextView.setText(R.string.obese);
         else messageTextView.setText(R.string.clinically_obese);
     }
 
-    private void setSavedEditTextsValues(){
+    private void setSavedEditTextsValues() {
         sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-        massEditText.setText(((Float)sharedPref.getFloat(getString(R.string.mass),0f)).toString());
-        heightEditText.setText(((Float)sharedPref.getFloat(getString(R.string.height),0f)).toString());
+        massEditText.setText(((Float) sharedPref.getFloat(getString(R.string.mass), 0f)).toString());
+        heightEditText.setText(((Float) sharedPref.getFloat(getString(R.string.height), 0f)).toString());
     }
-
 
 
 }
