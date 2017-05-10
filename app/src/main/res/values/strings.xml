@@ -11,6 +11,7 @@
     <string name="count">COUNT</string>
     <string name="author">Maciej Gruszczyński</string>
     <string name="send_to">Share result to...</string>
+    <string name="share_message">Result: Your BMI is RESULT and MESSAGE !"</string>
     <string-array name="measures_array">
         <item>Metric</item>
         <item>Imperial</item>

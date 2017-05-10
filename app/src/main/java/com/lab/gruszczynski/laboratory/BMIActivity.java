@@ -162,10 +162,12 @@ public class BMIActivity extends AppCompatActivity {
             case "Share":
                 if (BMIcalculated) {
                     String messageText = messageTextView.getText().toString();
-                    String shareText = "Result: Your BMI is " + String.format("%.2f", BMIresult) + " and " + messageText + " !";
+                    String shareMessage = getString(R.string.share_message);
+                    shareMessage.replace("RESULT", String.format("%.2f", BMIresult));
+                    shareMessage.replace("MESSAGE", messageText)
                     Intent shareIntent = new Intent();
                     shareIntent.setAction(Intent.ACTION_SEND);
-                    shareIntent.putExtra(Intent.EXTRA_TEXT, shareText);
+                    shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
                     shareIntent.setType("text/plain");
                     startActivity(Intent.createChooser(shareIntent, getResources().getText(R.string.send_to)));
                 } else {
