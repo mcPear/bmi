@@ -57,47 +57,50 @@ public class BMIActivity extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.measures_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                switch (position) {
-                    case 0: {
-                        iCountBMI = countBMIForKgM;
-                        Log.d("@@@@@", iCountBMI.toString());
-                        break;
-                    }
-                    case 1: {
-                        iCountBMI = countBMIForLbsFt;
-                        Log.d("@@@@@", iCountBMI.toString());
-                        break;
-                    }
+        spinner.setOnItemSelectedListener(new SpinnerOnItemSelectedListener());
+
+        countBMIButton.setOnClickListener(new CountButtonOnClickListener());
+    }
+
+    private class CountButtonOnClickListener implements View.OnClickListener{
+        public void onClick(View view) {
+            try {
+                BMIresult = iCountBMI.countBMI(Float.parseFloat(massEditText.getText().toString()), Float.parseFloat(heightEditText.getText().toString()));
+                showResultMessages();
+                BMIcalculated = true;
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+                showExceptionMessage("Wrong entry");
+                BMIcalculated = false;
+            } catch (IllegalArgumentException e) {
+                e.printStackTrace();
+                showExceptionMessage(e.getMessage());
+                BMIcalculated = false;
+            }
+        }
+    }
+
+    private class SpinnerOnItemSelectedListener implements AdapterView.OnItemSelectedListener{
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            switch (position) {
+                case 0: {
+                    iCountBMI = countBMIForKgM;
+                    Log.d("@@@@@", iCountBMI.toString());
+                    break;
+                }
+                case 1: {
+                    iCountBMI = countBMIForLbsFt;
+                    Log.d("@@@@@", iCountBMI.toString());
+                    break;
                 }
             }
+        }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
 
-            }
-        });
-
-        countBMIButton.setOnClickListener(
-                new View.OnClickListener() {
-                    public void onClick(View view) {
-                        try {
-                            BMIresult = iCountBMI.countBMI(Float.parseFloat(massEditText.getText().toString()), Float.parseFloat(heightEditText.getText().toString()));
-                            showResultMessages();
-                            BMIcalculated = true;
-                        } catch (NumberFormatException e) {
-                            e.printStackTrace();
-                            showExceptionMessage("Wrong entry");
-                            BMIcalculated = false;
-                        } catch (IllegalArgumentException e) {
-                            e.printStackTrace();
-                            showExceptionMessage(e.getMessage());
-                            BMIcalculated = false;
-                        }
-                    }
-                });
+        }
     }
 
     @Override
