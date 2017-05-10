@@ -39,6 +39,10 @@ public class BMIActivity extends AppCompatActivity {
     private float BMIresult = 0f;
     private SharedPreferences sharedPref;
 
+    private final String BMIcalculatedKey = "BMIcalculated";
+    private final String BMIresultKey = "result";
+    private final String noResultMessageKey = "noResultMessage";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,11 +110,11 @@ public class BMIActivity extends AppCompatActivity {
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
 
-        savedInstanceState.putBoolean("BMIcalculated", BMIcalculated);
+        savedInstanceState.putBoolean(BMIcalculatedKey, BMIcalculated);
         if (BMIcalculated) {
-            savedInstanceState.putFloat("result", BMIresult);
+            savedInstanceState.putFloat(BMIresultKey, BMIresult);
         } else {
-            savedInstanceState.putString("noResultMessage", messageTextView.getText().toString());
+            savedInstanceState.putString(noResultMessageKey, messageTextView.getText().toString());
         }
 
         super.onSaveInstanceState(savedInstanceState);
@@ -121,13 +125,13 @@ public class BMIActivity extends AppCompatActivity {
 
         super.onRestoreInstanceState(savedInstanceState);
 
-        BMIcalculated = savedInstanceState.getBoolean("BMIcalculated");
+        BMIcalculated = savedInstanceState.getBoolean(BMIcalculatedKey);
 
         if (BMIcalculated) {
-            BMIresult = savedInstanceState.getFloat("result");
+            BMIresult = savedInstanceState.getFloat(BMIresultKey);
             showResultMessages();
         } else {
-            messageTextView.setText(savedInstanceState.getString("noResultMessage"));
+            messageTextView.setText(savedInstanceState.getString(noResultMessageKey));
         }
 
     }
